@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01ec1d4f8b18eab4d8a14b61f549eac5, type: 3}
+  m_Name: ImgurSettings
+  m_EditorClassIdentifier: 
+  secretKey: 0f7ccf701d03f63&
+  clientSecret: d7bf91aa81266f3932a570bb0933b03c1d70d482

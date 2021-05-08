@@ -10,7 +10,48 @@ public class Util : MonoBehaviour
 {
     // Imgur and Unity
 
-    string url;
+    public string url;
+    public Image image;
+    public GameObject targetObj;
+
+    public static Util get()
+    {
+        return new GameObject("Utility").AddComponent<Util>();
+    }
+
+    public Util load(string url)
+    {
+        this.url = url;
+        return this;
+    }
+
+    public Util into(Image image)
+    {
+        this.targetObj = image.gameObject;
+        return this;
+    }
+
+    public void start()
+    {
+        if(url == null)
+        {
+            Debug.LogError("Url has not been set.");
+            return;
+        }
+
+        try
+        {
+            Uri uri = new Uri(url);
+            this.url = uri.AbsoluteUri;
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError("Url is not correct. " + ex);
+            return;
+        }
+
+        StartCoroutine(GetImage());
+    }
 
     IEnumerator GetImage()
     {
@@ -21,7 +62,7 @@ public class Util : MonoBehaviour
         {
             Texture2D texture = ((DownloadHandlerTexture)wr.downloadHandler).texture;
             Sprite sprite =  Sprite.Create(texture, new Rect(0.0f, 0.0f, texture.width, texture.height), new Vector2(0.5f, 0.5f), 100.0f);
-
+            targetObj.GetComponent<Image>().sprite = sprite;
         }
         else
         {

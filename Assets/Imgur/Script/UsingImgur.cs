@@ -1,7 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 using UnityEngine.Networking;
 
 public class UsingImgur : MonoBehaviour
@@ -19,7 +18,7 @@ public class UsingImgur : MonoBehaviour
     string tokenUrl;
 
     [Space(20)]
-    public returnAuth returnAuth;
+    public TokenReturn returnAuth;
 
     private void Awake()
     {
@@ -99,7 +98,7 @@ public class UsingImgur : MonoBehaviour
             {
                 Debug.Log(wr.downloadHandler.text);
                 string json = wr.downloadHandler.text;
-                returnAuth = JsonUtility.FromJson<returnAuth>(json);
+                returnAuth = JsonUtility.FromJson<TokenReturn>(json);
 
                 if (!string.IsNullOrEmpty(returnAuth.access_token))
                 {
@@ -141,7 +140,7 @@ public class UsingImgur : MonoBehaviour
             {
                 Debug.Log(wr.downloadHandler.text);
                 string json = wr.downloadHandler.text;
-                returnAuth = JsonUtility.FromJson<returnAuth>(json);
+                returnAuth = JsonUtility.FromJson<TokenReturn>(json);
 
                 if (!string.IsNullOrEmpty(returnAuth.access_token))
                 {
@@ -178,7 +177,7 @@ public class UsingImgur : MonoBehaviour
                 if (PlayerPrefs.HasKey("UserToken"))
                 {
                     string json = PlayerPrefs.GetString("UserToken");
-                    returnAuth = JsonUtility.FromJson<returnAuth>(json);
+                    returnAuth = JsonUtility.FromJson<TokenReturn>(json);
                 }
                 else
                 {
@@ -191,7 +190,7 @@ public class UsingImgur : MonoBehaviour
                 if (PlayerPrefs.HasKey("UserToken"))
                 {
                     string json = PlayerPrefs.GetString("UserToken");
-                    returnAuth = JsonUtility.FromJson<returnAuth>(json);
+                    returnAuth = JsonUtility.FromJson<TokenReturn>(json);
                 }
                 else
                 {

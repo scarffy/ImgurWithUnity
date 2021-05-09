@@ -12,5 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01ec1d4f8b18eab4d8a14b61f549eac5, type: 3}
   m_Name: ImgurSettings
   m_EditorClassIdentifier: 
-  secretKey: 0f7ccf701d03f63&
+  clientId: 0f7ccf701d03f63
   clientSecret: d7bf91aa81266f3932a570bb0933b03c1d70d482
+  authorizationBaseUrl: https://api.imgur.com/oauth2/authorize?client_id=
+  authorizationExtUrl: '&response_type='
+  tokenUrl: https://api.imgur.com/oauth2/token
+  accountInfoUrl: https://api.imgur.com/3/account/me/
+  appState: 0

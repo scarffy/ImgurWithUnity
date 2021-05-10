@@ -122,13 +122,11 @@ public class UsingImgur : MonoBehaviour
 
     IEnumerator GetToken()
     {
-        string _clientId = "0f7ccf701d03f63";   // NoCallBack OAuth
-        string _secretKey = "d7bf91aa81266f3932a570bb0933b03c1d70d482";
-        string authorizationUrl = "https://api.imgur.com/oauth2/token";
+        string authorizationUrl = settings.tokenUrl;
 
         WWWForm form = new WWWForm();
-        form.AddField("client_id", _clientId);
-        form.AddField("client_secret", _secretKey);
+        form.AddField("client_id", clientId);
+        form.AddField("client_secret", clientSecret);
         form.AddField("grant_type", "pin");
         form.AddField("pin", pin);
 

@@ -56,14 +56,7 @@ public class UsingImgur : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.I))
-        {
-            StartCoroutine(GetToken());
-        }
-        if (Input.GetKeyUp(KeyCode.U))
-        {
-            StartCoroutine(GetAuthorization());
-        }
+
     }
 
     public void AuthorizePin()
@@ -151,6 +144,25 @@ public class UsingImgur : MonoBehaviour
         }
     }
 
+    IEnumerator PostImageWithAccount()
+    {
+        using(UnityWebRequest wr = UnityWebRequest.Post("", ""))
+        {
+            yield return wr.SendWebRequest();
+
+            if(wr.error != null)
+            {
+                Debug.Log(wr.downloadHandler.text);
+            }
+            else
+            {
+                Debug.LogError("Unity Web Request Error : " + wr.error);
+            }
+        }
+        
+    }
+
+    #region State
     void checkState()
     {
         if (checkKey())
@@ -231,4 +243,5 @@ public class UsingImgur : MonoBehaviour
         else
             return false;
     }
+    #endregion
 }

@@ -16,6 +16,7 @@ public class UsingImgur : MonoBehaviour
 
     [Space(20)]
     string tokenUrl;
+    string postImageUrl;
 
     [Space(20)]
     public TokenReturn returnAuth;
@@ -49,6 +50,7 @@ public class UsingImgur : MonoBehaviour
         clientId = settings.clientId;
         clientSecret = settings.clientSecret;
         tokenUrl = settings.tokenUrl;
+        postImageUrl = settings.PostImageUrl;
 
         checkState();
     }
@@ -146,11 +148,13 @@ public class UsingImgur : MonoBehaviour
 
     IEnumerator PostImageWithAccount()
     {
-        using(UnityWebRequest wr = UnityWebRequest.Post("", ""))
+        WWWForm form = new WWWForm();
+
+        using (UnityWebRequest wr = UnityWebRequest.Post(postImageUrl,form))
         {
             yield return wr.SendWebRequest();
 
-            if(wr.error != null)
+            if (wr.error != null)
             {
                 Debug.Log(wr.downloadHandler.text);
             }
@@ -159,7 +163,25 @@ public class UsingImgur : MonoBehaviour
                 Debug.LogError("Unity Web Request Error : " + wr.error);
             }
         }
-        
+    }
+
+    IEnumerator PostImageWithAccount(string message, string longMessage, byte[] imageData, string imageLink)
+    {
+        WWWForm form = new WWWForm();
+
+        using (UnityWebRequest wr = UnityWebRequest.Post(postImageUrl, form))
+        {
+            yield return wr.SendWebRequest();
+
+            if (wr.error != null)
+            {
+                Debug.Log(wr.downloadHandler.text);
+            }
+            else
+            {
+                Debug.LogError("Unity Web Request Error : " + wr.error);
+            }
+        }
     }
 
     #region State

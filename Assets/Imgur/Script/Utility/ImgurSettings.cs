@@ -14,6 +14,7 @@ public class ImgurSettings : ScriptableObject
     [HideInInspector] public string authorizationExtUrl = "&response_type=";
     [HideInInspector] public string tokenUrl = "https://api.imgur.com/oauth2/token";
     [HideInInspector] public string accountInfoUrl = "https://api.imgur.com/3/account/me/";
+    [HideInInspector] public string PostImageUrl = "https://api.imgur.com/3/upload";
 
     public enum AppState
     {

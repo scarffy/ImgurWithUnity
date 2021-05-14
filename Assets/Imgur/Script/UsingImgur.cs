@@ -69,7 +69,7 @@ public class UsingImgur : MonoBehaviour
             return;
         }
         pin = pinInput.text;
-        if(string.IsNullOrEmpty(pin))
+        if (string.IsNullOrEmpty(pin))
         {
             Debug.LogError("Pin is still empty");
             return;
@@ -146,6 +146,12 @@ public class UsingImgur : MonoBehaviour
         }
     }
 
+    public void OnClick_PostImageWithAccount()
+    {
+        StartCoroutine(PostImageWithAccount(null, null, null));
+    }
+
+
     IEnumerator PostImageWithAccount()
     {
         WWWForm form = new WWWForm();
@@ -165,9 +171,13 @@ public class UsingImgur : MonoBehaviour
         }
     }
 
-    IEnumerator PostImageWithAccount(string message, string longMessage, byte[] imageData, string imageLink)
+    IEnumerator PostImageWithAccount(string message, string longMessage, byte[] imageData)
     {
         WWWForm form = new WWWForm();
+        form.AddBinaryData("image", imageData,"uploadImage", "image/jpeg");
+        form.AddField("type", "file");
+        form.AddField("title", message);
+        form.AddField("description", longMessage);
 
         using (UnityWebRequest wr = UnityWebRequest.Post(postImageUrl, form))
         {
@@ -182,6 +192,11 @@ public class UsingImgur : MonoBehaviour
                 Debug.LogError("Unity Web Request Error : " + wr.error);
             }
         }
+    }
+
+    IEnumerator PostImageWithAccountToAlbum()
+    {
+        yield return null;
     }
 
     #region State
